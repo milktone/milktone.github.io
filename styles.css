@@ -1,0 +1,47 @@
+/*#region a tags*/
+a:link {
+    color: azure;
+    text-decoration: none;
+}
+a:visited {
+    color: azure;
+    text-decoration: none;
+}
+a:hover {
+    color: azure;
+    text-decoration: underline;
+}
+a:active {
+    color: azure;
+    text-decoration: none;
+}
+/*#endregion*/
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: black;
+    color: azure;
+    margin: 5%;
+}
+
+h1 {
+    /* border: 3px solid green; */
+}
+
+nav {
+    float: left;
+    width: 20%;
+}
+
+article {
+    float: left;
+    width: 80%;
+}
+
+section {
+    clear: both;
+}
+
+footer {
+    clear: both;
+}
