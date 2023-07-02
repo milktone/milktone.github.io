@@ -1,6 +1,8 @@
 // 20230628
 // edited 20230701
 
+var sText; // readTextFile 읽은 값 저장용
+
 var questions = []; // 답안 항목들 배열
 
 var markingContainer = document.getElementById("markingContainer");
@@ -22,7 +24,6 @@ btn.addEventListener('click', generateQuestions, { once: true });
 // console.log(data);
 
 function readTextFile(file) {
-    var text;
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
     rawFile.onreadystatechange = ()=> {
@@ -30,19 +31,17 @@ function readTextFile(file) {
         {
             if(rawFile.status === 200 || rawFile.status == 0)
             {
-
-                text = rawFile.responseText;
+                sText = rawFile.responseText;
             }
         }
     };
     rawFile.send(null);
-    return text;
 }
 
 // 답안체크 목록 생성
 function generateQuestions() {
-    var text = readTextFile("https://milktone.github.io/res/20220424.json")
-    var answers = JSON.parse(text);
+    readTextFile("https://milktone.github.io/res/20220424.json")
+    let answers = JSON.parse(sText);
 
     //
     for (i = 0; i < answers.length; i++) {
