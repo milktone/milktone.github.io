@@ -41,15 +41,15 @@ function readTextFile(file) {
 // 답안체크 목록 생성
 function generateQuestions() {
     readTextFile("https://milktone.github.io/res/20220424.json")
-    let answers = JSON.parse(sText);
+    let answers = JSON.parse(sText); // answers.question[].answer: , answers.question[n].answer: .....
 
     //
-    for (i = 0; i < answers.length; i++) {
+    for (i = 0; i < answers.question.length; i++) {
         questions.push({
             bShowAnswerImme: false,
             bShowCorrectImme: false,
             options: ["Option 1", "Option 2", "Option 3", "Option 4"], // 현재는 사용 안 함
-            nCorrectAnswer: answers[i]
+            nCorrectAnswer: answers.question[i].answer
         })
     }
     //
