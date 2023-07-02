@@ -48,7 +48,7 @@ function readTextFile(file) {
     rawFile.send(null);
 }
 
-readTextFile("milktone.github.io/res/20220424.json");
+readTextFile("https://milktone.github.io/res/20220424.json");
 
 // 답안체크 목록 생성
 function generateQuestions() {
