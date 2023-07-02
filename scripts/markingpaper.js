@@ -14,17 +14,6 @@ var btn = document.getElementById('btn202204');
 btn.addEventListener('click', generateQuestions, { once: true });
 
 
-
-// 파일에서 정답 읽기
-// for (i = 0; i < data.question.length; i++) {
-//     questions.push({
-//         bShowAnswerImme: false,
-//         bShowCorrectImme: false,
-//         options: ["Option 1", "Option 2", "Option 3", "Option 4"], // 현재는 사용 안 함
-//         nCorrectAnswer: data.question[i].answer
-//     })
-// }
-
 // fetch('https://server.com/res/20220424.json')
 // .then((response) => response.json())
 // .then((json)=>console.log(json));
@@ -35,23 +24,32 @@ btn.addEventListener('click', generateQuestions, { once: true });
 function readTextFile(file) {
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function () {
+    rawFile.onreadystatechange = ()=> {
         if(rawFile.readyState === 4)
         {
             if(rawFile.status === 200 || rawFile.status == 0)
             {
-                var allText = rawFile.responseText;
-                alert(allText);
+                return rawFile.responseText;                
             }
         }
     };
     rawFile.send(null);
 }
 
-readTextFile("https://milktone.github.io/res/20220424.json");
-
 // 답안체크 목록 생성
 function generateQuestions() {
+
+    var answers = JSON.parse(readTextFile("https://milktone.github.io/res/20220424.json"));
+
+    //
+    for (i = 0; i < answers.length; i++) {
+        questions.push({
+            bShowAnswerImme: false,
+            bShowCorrectImme: false,
+            options: ["Option 1", "Option 2", "Option 3", "Option 4"], // 현재는 사용 안 함
+            nCorrectAnswer: answers[i]
+        })
+    }
 
     for (var i = 0; i < questions.length; i++) {
         var question = questions[i];
@@ -65,8 +63,7 @@ function generateQuestions() {
             optionElement.value = j;
 
             var labelElement = document.createElement("label");
-            // 코드 맨 위 questions의 options 넣으려다가 그냥 번호만 넣음
-            labelElement.innerHTML = j + 1;
+            labelElement.innerHTML = j + 1; // 라디오 버튼 1, 2, 3, 4... 숫자 쓰는 거
 
             questionElement.appendChild(optionElement);
             questionElement.appendChild(labelElement);
