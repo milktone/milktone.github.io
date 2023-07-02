@@ -22,6 +22,7 @@ btn.addEventListener('click', generateQuestions, { once: true });
 // console.log(data);
 
 function readTextFile(file) {
+    var text;
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
     rawFile.onreadystatechange = ()=> {
@@ -29,17 +30,19 @@ function readTextFile(file) {
         {
             if(rawFile.status === 200 || rawFile.status == 0)
             {
-                return rawFile.responseText;                
+
+                text = rawFile.responseText;
             }
         }
     };
     rawFile.send(null);
+    return text;
 }
 
 // 답안체크 목록 생성
 function generateQuestions() {
-
-    var answers = JSON.parse(readTextFile("https://milktone.github.io/res/20220424.json"));
+    var text = readTextFile("https://milktone.github.io/res/20220424.json")
+    var answers = JSON.parse(text);
 
     //
     for (i = 0; i < answers.length; i++) {
@@ -50,6 +53,7 @@ function generateQuestions() {
             nCorrectAnswer: answers[i]
         })
     }
+    //
 
     for (var i = 0; i < questions.length; i++) {
         var question = questions[i];
