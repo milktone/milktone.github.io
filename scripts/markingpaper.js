@@ -134,6 +134,6 @@ function displayResults() {
         ResultText.remove();
     }
     ResultText = document.createElement("div")
-    ResultText.innerHTML = "평균: " + parseInt(score / (checkResults.length + 1));
+    ResultText.innerHTML = "평균: " + parseInt(score / 5);  // 20문항 5과목인 시험이라 상수 5로 나누게 하고 있습니다 일단
     markingContainer.appendChild(ResultText);
 }
