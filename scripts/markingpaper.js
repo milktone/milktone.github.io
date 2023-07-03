@@ -14,7 +14,9 @@ var bShowCorrect = false;   // 체크한 문항이 정답인가 표시
 
 var btn = document.getElementById('btn202204');
 
-btn.addEventListener('click', ()=>generateQuestions("https://milktone.github.io/res/20220424.json"), { once: true });
+btn.addEventListener('click',
+    () => generateQuestions("https://milktone.github.io/res/20220424.json"),
+    { once: true });
 
 
 // fetch('https://server.com/res/20220424.json')
@@ -124,6 +126,6 @@ function displayResults() {
         }
     }
     var text = document.createElement("div")
-    text.innerHTML(score / (checkResults.length + 1));
+    text.innerHTML = checkResults.length + 1 + "문항 평균 점수:" + score / (checkResults.length + 1);
     markingContainer.appendChild(text);
 }
