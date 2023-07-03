@@ -126,8 +126,10 @@ function displayResults() {
             score = score + 5;
         }
     }
-    
-    ResultText.remove();
+
+    if (ResultText) {
+        ResultText.remove();
+    }
     ResultText = document.createElement("div")
     ResultText.innerHTML = checkResults.length + "문항 평균 점수:" + score / (checkResults.length + 1);
     markingContainer.appendChild(ResultText);
