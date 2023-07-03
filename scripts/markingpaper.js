@@ -8,6 +8,7 @@ var questions = []; // 답안 항목들 배열
 var markingContainer = document.getElementById("markingContainer");
 var userResponses = [];
 var checkResults = [];
+var ResultText;
 
 var bShowAnswer = false;    // 정답 표시
 var bShowCorrect = false;   // 체크한 문항이 정답인가 표시
@@ -92,7 +93,7 @@ function generateQuestions(sSource) {
 
 //
 function handleSubmit() {
-    for (var i = 0; i < questions.lenght; i++) {
+    for (var i = 0; i < questions.length; i++) {
         // 같은이름의 라디오버튼 중 체크되어 있는 엘리먼트가 있다면 가져옵니다
         var selectedOption = document.querySelector('input[name="question_' + i + '"]:checked');
 
@@ -125,7 +126,9 @@ function displayResults() {
             score = score + 5;
         }
     }
-    var text = document.createElement("div")
-    text.innerHTML = checkResults.length + 1 + "문항 평균 점수:" + score / (checkResults.length + 1);
+    
+    ResultText.remove();
+    ResultText = document.createElement("div")
+    ResultText.innerHTML = checkResults.length + "문항 평균 점수:" + score / (checkResults.length + 1);
     markingContainer.appendChild(text);
 }
