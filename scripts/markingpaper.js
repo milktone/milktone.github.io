@@ -134,6 +134,6 @@ function displayResults() {
         ResultText.remove();
     }
     ResultText = document.createElement("div")
-    ResultText.innerHTML = "평균: " + floor(score / (checkResults.length + 1));
+    ResultText.innerHTML = "평균: " + parseInt(score / (checkResults.length + 1));
     markingContainer.appendChild(ResultText);
 }
