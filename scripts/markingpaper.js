@@ -101,7 +101,7 @@ function handleSubmit() {
         var selectedOption = document.querySelector('input[name="question_' + i + '"]:checked');
 
         if (selectedOption) {
-            userResponses.push(parseInt(selectedOption.value));
+            userResponses.push(parseInt(selectedOption.value + 1)); // 문항은 1부터 시작하니 1을 더합니다
         } else {
             userResponses.push(null);   // 가져오지 못했다면 undefined 일테니 빈 값을 넣습니다
         }
