@@ -14,7 +14,7 @@ var bShowCorrect = false;   // 체크한 문항이 정답인가 표시
 
 var btn = document.getElementById('btn202204');
 
-btn.addEventListener('click', generateQuestions("https://milktone.github.io/res/20220424.json"), { once: true });
+btn.addEventListener('click', ()=>generateQuestions("https://milktone.github.io/res/20220424.json"), { once: true });
 
 
 // fetch('https://server.com/res/20220424.json')
@@ -61,7 +61,7 @@ function generateQuestions(sSource) {
     for (var i = 0; i < questions.length; i++) {
         var question = questions[i];
         var questionElement = document.createElement("div");
-        questionElement.innerHTML = i + ". ";
+        questionElement.innerHTML = i + 1 + "번: "; // 문제는 1번부터 시작하니 1을 더해줍니다
 
         for (var j = 0; j < question.options.length; j++) {
             var optionElement = document.createElement("input");
@@ -83,6 +83,7 @@ function generateQuestions(sSource) {
     //
     var submitbtn = document.createElement("button");
     submitbtn.innerHTML = "채점";
+    markingContainer.appendChild(submitbtn);
     submitbtn.addEventListener("click", handleSubmit);
     //
 }
