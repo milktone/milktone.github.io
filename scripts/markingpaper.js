@@ -93,6 +93,9 @@ function generateQuestions(sSource) {
 
 //
 function handleSubmit() {
+
+    userResponses = [];
+
     for (var i = 0; i < questions.length; i++) {
         // 같은이름의 라디오버튼 중 체크되어 있는 엘리먼트가 있다면 가져옵니다
         var selectedOption = document.querySelector('input[name="question_' + i + '"]:checked');
@@ -131,6 +134,6 @@ function displayResults() {
         ResultText.remove();
     }
     ResultText = document.createElement("div")
-    ResultText.innerHTML = checkResults.length + "문항 평균 점수:" + score / (checkResults.length + 1);
+    ResultText.innerHTML = "평균: " + floor(score / (checkResults.length + 1));
     markingContainer.appendChild(ResultText);
 }
